@@ -9,7 +9,7 @@ db_connection = db.connect_database()
 
 # API to get the list of products
 @app.route("/api/product/list", methods=["GET"])
-def apiProduct_list():
+def api_product_list():
     limit = int(request.args.get('limit', 10))
     offset = int(request.args.get('offset', 0))
     products = db.get_products(db_connection, limit, offset)
@@ -52,8 +52,9 @@ def index():
     # render_template_string may contain an injection. Prefer to use templates in files instead.
     # See https://docs.datadoghq.com/code_analysis/static_analysis_rules/python-flask/no-render-template-string/
     # Replace with the following:
-    # return render_template("index.html")
-    return render_template_string("<html><body><a href=\"/product/list\">product list</a></body></html>")
+     return render_template("index.html")
+     
+    #return render_template_string("<html><body><a href=\"/product/list\">product list</a></body></html>")
 
 # Your application should never run on all interfaces.
 # See https://docs.datadoghq.com/code_analysis/static_analysis_rules/python-flask/listen-all-interfaces/
